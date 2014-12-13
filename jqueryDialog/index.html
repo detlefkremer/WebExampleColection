@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+    	<meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Dialog Box Example with jquery</title>
+        <script src="../includes/jquery-1.11.1.min.js"></script>
+         <script src="../includes/jquery-ui.js"></script>
+         
+         <link rel="stylesheet" href="../includes/jquery-ui.css">    <!-- ohne wird modal im dialog nicht wirksam -->
+         <style>
+
+         </style>
+    </head>
+    <body>
+        <h1>Simple jquery Dialog</h1>
+        <button id="trigger">Bitte hier drücken <br> um einen Fehler<br>zu simulieren</button>
+        <button id="actionBtn" onclick="alert()">Hier drücken <br> um eine andere<br>Reaktion auszulösen</button>
+        <div id="messageDiv" title="MITTEILUNG">&nbsp;</div>
+       
+    </body>
+</html>
+ <script>
+         $("#messageDiv").dialog({autoOpen:false});
+         
+         $("#messageDiv").dialog({closeOnEscape: true});
+         $("#messageDiv").dialog({closeText: "zur Kenntnis genommen"});
+         $("#messageDiv").dialog({modal: true});  // benötigt jquery-ui.css
+         $("#messageDiv").dialog({position:{my:"right bottom", at:"right bottom", of: document}});
+         $("#messageDiv").dialog({show:{effect:"pulsate", duration:800}});
+         
+         $("#trigger").click(function() {
+           console.log('$("#messageDiv").dialog("open")');
+         $("#messageDiv").html("A dialog is a floating window that contains a title bar and a content area. The dialog window can be moved, resized and closed with the 'x' icon by default.If the content length exceeds the maximum height, a scrollbar will automatically appear.A bottom button bar and semi-transparent modal overlay layer are common options that can be added.");
+         $("#messageDiv").dialog("open");
+         });
+        </script>
